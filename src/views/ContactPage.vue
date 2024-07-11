@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <TheHeader />
-    <h1>Contact Page</h1>
-  </div>
+  <TheHeader />
+  <v-main>
+    <div>
+      <h1>Contact Page</h1>
+    </div>
+  </v-main>
 </template>
 
 <script lang="ts">
