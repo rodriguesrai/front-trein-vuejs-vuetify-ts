@@ -20,8 +20,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import TheHeader from '@/components/TheHeader.vue'
-import CardItem from '@/components/CardItem.vue'
 import TheFooter from '@/components/TheFooter.vue'
+import CardItem from '@/components/CardItem.vue'
 
 const slides = ref(['First', 'Second', 'Third', 'Fourth', 'Fifth'])
 const colors = ref(['indigo', 'warning', 'pink darken-2', 'red lighten-1', 'deep-purple accent-4'])

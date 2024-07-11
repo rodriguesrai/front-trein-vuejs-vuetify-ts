@@ -1,8 +1,20 @@
 <template>
-  <v-footer>
+  <v-footer class="footer-container">
     <v-container>
-      <v-row>
-        <v-col cols="12" sm="6" md="4">
+      <v-row class="footer-wrapper">
+        <v-row class="">
+          <v-btn
+            v-for="link in links"
+            :key="link"
+            class="mx-2"
+            color="white"
+            rounded="xl"
+            variant="text"
+          >
+            {{ link }}
+          </v-btn>
+        </v-row>
+        <v-col class="icon-container">
           <v-btn icon>
             <v-icon>mdi-facebook</v-icon>
           </v-btn>
@@ -16,21 +28,45 @@
             <v-icon>mdi-instagram</v-icon>
           </v-btn>
         </v-col>
-
-        <v-col cols="12" sm="6" md="4">
-          <v-btn>Terms of Service</v-btn>
-          <v-btn>Privacy Policy</v-btn>
-          <v-btn>Cookie Policy</v-btn>
-        </v-col>
-
-        <v-col cols="12" sm="12" md="4">
-          <v-btn>© 2024 Your Company Name</v-btn>
-        </v-col>
+        <v-row> {{ year }} Areopagus </v-row>
       </v-row>
     </v-container>
   </v-footer>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
 
-<style scoped></style>
+const year = ref(new Date().getFullYear())
+const links = ref(['Home', 'About Us', 'Team', 'Services', 'Blog', 'Contact Us'])
+</script>
+
+<style scoped>
+.footer-container {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  width: 100%;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+</style>
