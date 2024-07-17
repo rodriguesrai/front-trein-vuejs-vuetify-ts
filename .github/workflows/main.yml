@@ -44,18 +44,53 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Login to Github Registry
+      - name: Login to GitHub Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_TOKEN }}
 
+      - name: Generate Docker tags and labels
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMG_NAME }}
+          tags: |
+            type=ref,event=branch,pattern=${{ github.ref_name }}
+            type=sha
+          labels: |
+            org.opencontainers.image.title=My Vue.js Application
+            org.opencontainers.image.description=CI/CD Pipeline for Vue.js app
+            org.opencontainers.image.created=${{ github.event.head_commit.timestamp }}
+
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/${{ env.IMG_NAME }} .
+        run: |
+          IMAGE_TAG="ghcr.io/${{ github.repository_owner }}/${{ env.IMG_NAME }}:${{ steps.meta.outputs.tags }}"
+          docker build -t $IMAGE_TAG .
+          echo "::set-env name=IMAGE_TAG::$IMAGE_TAG"
 
       - name: List Docker images
         run: docker images
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/${{ env.IMG_NAME }}
+        run: docker push $IMAGE_TAG
+
+  # deploy:
+  #   name: Deploy to AWS CloudFront
+  #   runs-on: ubuntu-latest
+  #   needs: build-and-push
+
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+
+  #     - name: Deploy to AWS CloudFront
+  #       run: |
+  #         aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
