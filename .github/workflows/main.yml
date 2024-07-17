@@ -52,10 +52,10 @@ jobs:
           password: ${{ secrets.GH_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ env.IMG_NAME }} .
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/${{ env.IMG_NAME }} .
 
       - name: List Docker images
         run: docker images
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ env.IMG_NAME }}
+        run: docker push ghcr.io/${{ github.repository_owner }}/${{ env.IMG_NAME }}
