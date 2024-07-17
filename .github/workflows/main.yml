@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-  push:
-    branches:
       - TREIN-210/pipeline-front
 
 env:
@@ -30,27 +28,26 @@ jobs:
       - name: Run tests
         run: npm run test:unit --passWithNoTests
 
-
   build-and-push:
     runs-on: ubuntu-latest
     needs: test
-  
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-  
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+
       - name: Login to Github Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Build and push Docker image
         run: |
           docker build -t ghcr.io/${{ github.event.repository.name }} .
