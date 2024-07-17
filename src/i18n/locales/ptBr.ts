@@ -5,12 +5,15 @@ const ptBrI18n = {
   },
   nav: {
     home: 'Início',
-    about: 'Sobre',
+    contact: 'Contato',
     login: 'Login',
     logout: 'Logout',
-    title: 'Aplicação Front-End'
+    title: 'Aplicação Frontend'
   },
   contact: {
+    expansionPainelTitle: 'Perguntas',
+    expansionPanelText: 'Resposta',
+    name: 'Nome',
     header: 'Contato',
     email: 'Email',
     phone: 'Telefone',

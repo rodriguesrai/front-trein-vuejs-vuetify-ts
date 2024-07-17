@@ -6,17 +6,33 @@
       </v-app-bar-nav-icon>
     </template>
     <div>
-      <v-btn to="/">Home</v-btn>
-      <v-btn to="/contact">Contact</v-btn>
+      <v-btn to="/">{{ $t('nav.home') }}</v-btn>
+      <v-btn to="/contact">{{ $t('nav.contact') }}</v-btn>
     </div>
-    <v-app-bar-title class="title">Application Front-End</v-app-bar-title>
+    <v-app-bar-title class="title">{{ $t('nav.title') }}</v-app-bar-title>
     <div>
-      <v-btn to="/login">Login</v-btn>
+      <v-btn @click="toggleLanguage">{{ currentLanguage }}</v-btn>
+      <v-btn to="/login">{{ $t('nav.login') }}</v-btn>
     </div>
   </v-app-bar>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t, locale } = useI18n()
+
+// Método para alternar o idioma
+const toggleLanguage = () => {
+  locale.value = locale.value === 'en' ? 'ptBr' : 'en'
+}
+
+// Computa o idioma atual para exibir no botão toggle
+const currentLanguage = computed(() => {
+  return locale.value === 'en' ? 'English' : 'Português'
+})
+</script>
 
 <style scoped>
 .header {

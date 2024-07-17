@@ -5,18 +5,22 @@ const enI18n = {
   },
   nav: {
     home: 'Home',
-    about: 'About',
+    contact: 'Contact',
     login: 'Login',
     logout: 'Logout',
-    title: 'Application Front-End'
+    title: 'Application Frontend'
   },
   contact: {
+    expansionPainelTitle: 'Asks',
+    expansionPanelText: 'Answer',
+    name: 'Name',
     header: 'Contact',
     email: 'Email',
     phone: 'Phone',
     address: 'Address',
     faq: 'Common Questions'
-  }
+  },
+  home: {}
 }
 
 export default enI18n
