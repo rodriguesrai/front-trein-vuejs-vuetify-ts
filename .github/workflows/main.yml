@@ -8,6 +8,7 @@ on:
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  IMG_NAME: front-trein-vuejs-vuetify-ts
 
 jobs:
   test:
@@ -52,5 +53,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/${{ github.event.repository.name }} .
-          docker push ghcr.io/${{ github.event.repository.name }}
+          docker build -t ghcr.io/${{ env.IMG_NAME }} .
+          docker push ghcr.io/${{ env.IMG_NAME }}
