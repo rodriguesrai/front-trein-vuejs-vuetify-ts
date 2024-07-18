@@ -1,0 +1,7 @@
+services:
+  front-trein-vuejs-vuetify-ts:
+    build: .
+    container_name: front-trein-vuejs-vuetify-ts
+    ports:
+      - 8080:80
+    restart: always
