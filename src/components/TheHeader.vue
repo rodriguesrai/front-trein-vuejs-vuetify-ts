@@ -14,13 +14,19 @@
       <v-btn @click="changeLanguage('en')" class="transparent-button"> EN </v-btn>
       <v-btn @click="changeLanguage('ptBr')" class="transparent-button">BR</v-btn>
     </v-btn-toggle>
-    <v-btn to="/login">{{ $t('nav.login') }}</v-btn>
+    <div v-if="store.email">
+      <span>{{ store.email }}</span>
+    </div>
+    <v-btn v-if="!isLogged" to="/login">{{ $t('nav.login') }}</v-btn>
   </v-app-bar>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useUserStore } from '@/store/useUserStore'
+
+const store = useUserStore()
 
 const { locale } = useI18n()
 
@@ -29,6 +35,8 @@ const toggle_exclusive = ref(false)
 const changeLanguage = (lang: string) => {
   locale.value = lang
 }
+
+const isLogged = computed(() => store.email !== '')
 </script>
 
 <style scoped>

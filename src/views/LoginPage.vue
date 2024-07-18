@@ -27,15 +27,18 @@
 
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue'
+import { useUserStore } from '@/store/useUserStore'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const email = ref('')
 const password = ref('')
 const router = useRouter()
+const userStore = useUserStore()
 
 const login = () => {
-  if (email.value === 'user@example.com' && password.value === '123456') {
+  if (email.value !== '' && password.value !== '') {
+    userStore.setEmail(email.value)
     router.push('/')
   } else {
     console.log('Credenciais inválidas. Por favor, tente novamente.')
