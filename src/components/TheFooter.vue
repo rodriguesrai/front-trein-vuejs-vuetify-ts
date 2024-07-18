@@ -11,7 +11,7 @@
             rounded="xl"
             variant="text"
           >
-            {{ link }}
+            {{ t(`footer.links.${link}`) }}
           </v-btn>
         </v-row>
         <v-col class="icon-container">
@@ -36,9 +36,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const year = ref(new Date().getFullYear())
-const links = ref(['Home', 'About Us', 'Team', 'Services', 'Blog', 'Contact Us'])
+const links = ref(['home', 'aboutUs', 'team', 'services', 'blog', 'contactUs'])
 </script>
 
 <style scoped>

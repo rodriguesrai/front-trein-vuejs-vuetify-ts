@@ -20,7 +20,33 @@ const enI18n = {
     address: 'Address',
     faq: 'Common Questions'
   },
-  home: {}
+  home: {
+    slides: {
+      first: 'First',
+      second: 'Second',
+      third: 'Third',
+      fourth: 'Fourth',
+      fifth: 'Fifth'
+    },
+    slideText: 'Slide'
+  },
+  footer: {
+    links: {
+      home: 'Home',
+      aboutUs: 'About Us',
+      team: 'Team',
+      services: 'Services',
+      blog: 'Blog',
+      contactUs: 'Contact Us'
+    },
+    copyright: 'Areopagus'
+  },
+  cardItem: {
+    title: 'Title',
+    description: 'Description DescriptionDescriptionDescriptionDescription',
+    buttonAction: 'Button',
+    buttonAnotherAction: 'Another Button'
+  }
 }
 
 export default enI18n
