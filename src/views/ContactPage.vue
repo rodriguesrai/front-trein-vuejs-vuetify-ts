@@ -2,37 +2,37 @@
   <v-main class="main-container">
     <TheHeader />
     <aside class="aside-container">
-      <h2 class="faq-title">Perguntas Frequentes</h2>
+      <h2 class="faq-title">{{ $t('contact.faq') }}</h2>
       <v-expansion-panels class="faq-container">
         <v-expansion-panel
-          title="Title Expansion-Panel"
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
+          :title="$t('contact.expansionPainelTitle')"
+          :text="$t('contact.expansionPanelText')"
         >
         </v-expansion-panel>
         <v-expansion-panel
-          title="Title Expansion-Panel"
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
+          :title="$t('contact.expansionPainelTitle')"
+          :text="$t('contact.expansionPanelText')"
         >
         </v-expansion-panel>
         <v-expansion-panel
-          title="Title Expansion-Panel"
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
+          :title="$t('contact.expansionPainelTitle')"
+          :text="$t('contact.expansionPanelText')"
         >
         </v-expansion-panel>
         <v-expansion-panel
-          title="Title Expansion-Panel"
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
+          :title="$t('contact.expansionPainelTitle')"
+          :text="$t('contact.expansionPanelText')"
         >
         </v-expansion-panel>
       </v-expansion-panels>
     </aside>
     <article class="contact-container">
-      <h2>Contato</h2>
+      <h2>{{ $t('contact.header') }}</h2>
       <address class="contact-info-container">
-        <p>Nome: João da Silva</p>
-        <p>Email: joao.silva@example.com</p>
-        <p>Telefone: (11) 1234-5678</p>
-        <p>Endereço: Rua Exemplo, 123, Bairro Exemplo, Cidade Exemplo, SP</p>
+        <p>{{ $t('contact.name') }}: João da Silva</p>
+        <p>{{ $t('contact.email') }}: joao.silva@example.com</p>
+        <p>{{ $t('contact.phone') }}: (11) 1234-5678</p>
+        <p>{{ $t('contact.address') }}: Rua Exemplo, 123, Bairro Exemplo, Cidade Exemplo, SP</p>
       </address>
       <div class="social-buttons">
         <v-btn icon href="https://facebook.com" target="_blank">

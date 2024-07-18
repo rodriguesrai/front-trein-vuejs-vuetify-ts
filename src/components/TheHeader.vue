@@ -6,17 +6,30 @@
       </v-app-bar-nav-icon>
     </template>
     <div>
-      <v-btn to="/">Home</v-btn>
-      <v-btn to="/contact">Contact</v-btn>
+      <v-btn to="/">{{ $t('nav.home') }}</v-btn>
+      <v-btn to="/contact">{{ $t('nav.contact') }}</v-btn>
     </div>
-    <v-app-bar-title class="title">Application Front-End</v-app-bar-title>
-    <div>
-      <v-btn to="/login">Login</v-btn>
-    </div>
+    <v-app-bar-title class="title">{{ $t('nav.title') }}</v-app-bar-title>
+    <v-btn-toggle v-model="toggle_exclusive">
+      <v-btn @click="changeLanguage('en')" class="transparent-button"> EN </v-btn>
+      <v-btn @click="changeLanguage('ptBr')" class="transparent-button">BR</v-btn>
+    </v-btn-toggle>
+    <v-btn to="/login">{{ $t('nav.login') }}</v-btn>
   </v-app-bar>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+const toggle_exclusive = ref(false)
+
+const changeLanguage = (lang: string) => {
+  locale.value = lang
+}
+</script>
 
 <style scoped>
 .header {
@@ -28,5 +41,10 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
+}
+
+.transparent-button {
+  background-color: transparent;
+  color: white;
 }
 </style>
