@@ -26,13 +26,15 @@
         @input="validate('message')"
         required
       ></v-textarea>
-      <v-btn type="submit" color="primary">{{ $t('contact.form.submit') }}</v-btn>
+      <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
+        $t('contact.form.submit')
+      }}</v-btn>
     </v-form>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
 
@@ -49,6 +51,13 @@ const errors = ref({
   email: [] as string[],
   message: [] as string[]
 })
+
+const isFormValid = computed(
+  () =>
+    !Object.entries(formData.value).some(
+      ([field, value]) => !value || errors.value[field as keyof typeof errors.value].length > 0
+    )
+)
 
 const schema = yup.object().shape({
   name: yup.string().required(() => t(`contact.form.error.name`)),
