@@ -18,7 +18,20 @@ const enI18n = {
     email: 'Email',
     phone: 'Phone',
     address: 'Address',
-    faq: 'Common Questions'
+    faq: 'Common Questions',
+    form: {
+      title: 'Contact us',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      submit: 'Submit',
+      error: {
+        name: 'Name is required',
+        emailInvalid: 'Email is invalid',
+        emailRequired: 'Email is required',
+        message: 'Message is required'
+      }
+    }
   },
   home: {
     slides: {

@@ -1,64 +1,69 @@
 <template>
   <v-main class="main-container">
     <TheHeader />
-    <aside class="aside-container">
-      <h2 class="faq-title">{{ $t('contact.faq') }}</h2>
-      <v-expansion-panels class="faq-container">
-        <v-expansion-panel
-          :title="$t('contact.expansionPainelTitle')"
-          :text="$t('contact.expansionPanelText')"
-        >
-        </v-expansion-panel>
-        <v-expansion-panel
-          :title="$t('contact.expansionPainelTitle')"
-          :text="$t('contact.expansionPanelText')"
-        >
-        </v-expansion-panel>
-        <v-expansion-panel
-          :title="$t('contact.expansionPainelTitle')"
-          :text="$t('contact.expansionPanelText')"
-        >
-        </v-expansion-panel>
-        <v-expansion-panel
-          :title="$t('contact.expansionPainelTitle')"
-          :text="$t('contact.expansionPanelText')"
-        >
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </aside>
-    <article class="contact-container">
-      <h2>{{ $t('contact.header') }}</h2>
-      <address class="contact-info-container">
-        <p>{{ $t('contact.name') }}: João da Silva</p>
-        <p>{{ $t('contact.email') }}: joao.silva@example.com</p>
-        <p>{{ $t('contact.phone') }}: (11) 1234-5678</p>
-        <p>{{ $t('contact.address') }}: Rua Exemplo, 123, Bairro Exemplo, Cidade Exemplo, SP</p>
-      </address>
-      <div class="social-buttons">
-        <v-btn icon href="https://facebook.com" target="_blank">
-          <v-icon>mdi-facebook</v-icon>
-        </v-btn>
-        <v-btn icon href="https://twitter.com" target="_blank">
-          <v-icon>mdi-twitter</v-icon>
-        </v-btn>
-        <v-btn icon href="https://linkedin.com" target="_blank">
-          <v-icon>mdi-linkedin</v-icon>
-        </v-btn>
-        <v-btn icon href="https://instagram.com" target="_blank">
-          <v-icon>mdi-instagram</v-icon>
-        </v-btn>
-      </div>
-    </article>
+    <v-container class="contact-container-wrapper">
+      <aside class="aside-container">
+        <h2 class="faq-title">{{ $t('contact.faq') }}</h2>
+        <v-expansion-panels class="faq-container">
+          <v-expansion-panel
+            :title="$t('contact.expansionPainelTitle')"
+            :text="$t('contact.expansionPanelText')"
+          >
+          </v-expansion-panel>
+          <v-expansion-panel
+            :title="$t('contact.expansionPainelTitle')"
+            :text="$t('contact.expansionPanelText')"
+          >
+          </v-expansion-panel>
+          <v-expansion-panel
+            :title="$t('contact.expansionPainelTitle')"
+            :text="$t('contact.expansionPanelText')"
+          >
+          </v-expansion-panel>
+          <v-expansion-panel
+            :title="$t('contact.expansionPainelTitle')"
+            :text="$t('contact.expansionPanelText')"
+          >
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </aside>
+      <article class="contact-container">
+        <h2>{{ $t('contact.header') }}</h2>
+        <address class="contact-info-container">
+          <p>{{ $t('contact.name') }}: João da Silva</p>
+          <p>{{ $t('contact.email') }}: joao.silva@example.com</p>
+          <p>{{ $t('contact.phone') }}: (11) 1234-5678</p>
+          <p>{{ $t('contact.address') }}: Rua Exemplo, 123, Bairro Exemplo, Cidade Exemplo, SP</p>
+        </address>
+        <div class="social-buttons">
+          <v-btn icon href="https://facebook.com" target="_blank">
+            <v-icon>mdi-facebook</v-icon>
+          </v-btn>
+          <v-btn icon href="https://twitter.com" target="_blank">
+            <v-icon>mdi-twitter</v-icon>
+          </v-btn>
+          <v-btn icon href="https://linkedin.com" target="_blank">
+            <v-icon>mdi-linkedin</v-icon>
+          </v-btn>
+          <v-btn icon href="https://instagram.com" target="_blank">
+            <v-icon>mdi-instagram</v-icon>
+          </v-btn>
+        </div>
+      </article>
+    </v-container>
+    <MyForm class="form-wrapper" />
   </v-main>
 </template>
 
 <script setup lang="ts">
+import MyForm from '@/components/MyForm.vue'
 import TheHeader from '@/components/TheHeader.vue'
 </script>
 
 <style scoped>
 .main-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -67,7 +72,6 @@ import TheHeader from '@/components/TheHeader.vue'
 }
 
 .aside-container {
-  width: 20%;
   padding: 1rem;
   border-right: solid 1px rgb(85, 84, 84);
   gap: 20px;
@@ -104,5 +108,14 @@ address {
 .contact-info-container > p {
   margin-bottom: 1rem;
   gap: 0.5rem;
+}
+
+.contact-container-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrapper {
+  max-width: 50%;
 }
 </style>

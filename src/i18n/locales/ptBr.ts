@@ -18,7 +18,20 @@ const ptBrI18n = {
     email: 'Email',
     phone: 'Telefone',
     address: 'Endereço',
-    faq: 'Perguntas Frequentes'
+    faq: 'Perguntas Frequentes',
+    form: {
+      title: 'Entre em Contato Conosco',
+      name: 'Nome',
+      email: 'Email',
+      message: 'Mensagem',
+      submit: 'Enviar',
+      error: {
+        name: 'Nome é obrigatório',
+        emailInvalid: 'Email é inválido',
+        emailRequired: 'Email é obrigatório',
+        message: 'Mensagem é obrigatória'
+      }
+    }
   },
   home: {
     slides: {
