@@ -7,15 +7,26 @@
           <v-card class="elevation-3">
             <v-card-title class="headline">Login</v-card-title>
             <v-card-text>
-              <v-form @submit.prevent="login">
-                <v-text-field v-model="email" label="Email" type="email" required></v-text-field>
+              <v-form @submit.prevent="handleSubmit">
                 <v-text-field
-                  v-model="password"
-                  label="Password"
-                  type="password"
+                  v-model="formData.email"
+                  :error-messages="errors.email"
+                  label="Email"
+                  type="email"
+                  @blur="validate('email')"
+                  @input="validate('email')"
                   required
                 ></v-text-field>
-                <v-btn type="submit" color="primary" :disabled="!email || !password">Login</v-btn>
+                <v-text-field
+                  v-model="formData.password"
+                  :error-messages="errors.password"
+                  label="Password"
+                  type="password"
+                  @blur="validate('password')"
+                  @input="validate('password')"
+                  required
+                ></v-text-field>
+                <v-btn type="submit" color="primary" :disabled="!isFormValid">Login</v-btn>
               </v-form>
             </v-card-text>
           </v-card>
