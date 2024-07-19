@@ -39,15 +39,12 @@
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue'
 import { useUserStore } from '@/store/useUserStore'
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForm } from '../hooks/useForm'
 import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
-const email = ref('')
-const password = ref('')
 const router = useRouter()
 const userStore = useUserStore()
 
@@ -69,7 +66,6 @@ const handleSubmit = () => {
   if (isFormValid.value) {
     userStore.setEmail(formData.value.email)
     router.push('/')
-    localStorage.setItem('userEmail', formData.value.email)
   }
 }
 </script>
