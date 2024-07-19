@@ -80,22 +80,9 @@ const validate = (field: keyof typeof formData.value) => {
 }
 
 const handleSubmit = () => {
-  schema
-    .validate(formData.value, { abortEarly: false })
-    .then(() => {
-      console.log('Formulário válido')
-    })
-    .catch((err) => {
-      if (err instanceof yup.ValidationError) {
-        const newErrors = { name: [], email: [], message: [] }
-        err.inner.forEach((error) => {
-          if (error.path) {
-            newErrors[error.path] = error.errors
-          }
-        })
-        errors.value = newErrors
-      }
-    })
+  schema.validate(formData.value, { abortEarly: false }).then(() => {
+    console.log('Formulário válido')
+  })
 }
 </script>
 
