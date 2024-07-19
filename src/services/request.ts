@@ -6,12 +6,9 @@ export const login = async (email: string, password: string) => {
       username: email,
       password
     })
-    console.log(response)
-    const { access_token } = response.data
-    console.log('token', access_token)
-
-    localStorage.setItem('token', access_token)
+    const { data } = response
+    return data
   } catch (error) {
-    console.log('Error: POST /auth/login', error)
+    console.log(error)
   }
 }

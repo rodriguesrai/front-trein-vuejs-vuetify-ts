@@ -63,9 +63,14 @@ const { formData, errors, validate, isFormValid } = useForm(
 const handleSubmit = async () => {
   if (isFormValid.value) {
     try {
-      await login(formData.value.username, formData.value.password)
-      userStore.setEmail(formData.value.username)
-      router.push('/')
+      const data = await login(formData.value.email, formData.value.password)
+      if (data && data.access_token) {
+        localStorage.setItem('token', data.access_token)
+        userStore.setEmail(formData.value.email)
+        router.push('/')
+      } else {
+        console.log('Login falhou: dados inválidos', data)
+      }
     } catch (error) {
       console.log('Login falhou', error)
     }
