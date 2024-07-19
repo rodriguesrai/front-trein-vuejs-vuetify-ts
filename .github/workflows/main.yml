@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - TREIN-211/instance-ec2
 
 env:
   IMG_NAME: front-trein-vuejs-vuetify-ts
