@@ -9,12 +9,12 @@
             <v-card-text>
               <v-form @submit.prevent="handleSubmit">
                 <v-text-field
-                  v-model="formData.email"
-                  :error-messages="errors.email"
-                  label="Email"
-                  type="email"
-                  @blur="validate('email')"
-                  @input="validate('email')"
+                  v-model="formData.username"
+                  :error-messages="errors.username"
+                  label="Username"
+                  type="username"
+                  @blur="validate('username')"
+                  @input="validate('username')"
                   required
                 ></v-text-field>
                 <v-text-field
@@ -51,20 +51,24 @@ const userStore = useUserStore()
 
 const { formData, errors, validate, isFormValid } = useForm(
   {
-    email: '',
+    username: '',
     password: ''
   },
   yup.object().shape({
-    email: yup.string().required(() => t(`contact.form.error.emailRequired`)),
-    password: yup.string().required('Password is required')
+    username: yup.string().required(() => t(`login.usernameRequired`)),
+    password: yup.string().required(() => t(`login.passwordRequired`))
   })
 )
 
 const handleSubmit = async () => {
   if (isFormValid.value) {
-    userStore.setEmail(formData.value.email)
-    await login(formData.value.email, formData.value.password)
-    // router.push('/')
+    try {
+      await login(formData.value.username, formData.value.password)
+      userStore.setEmail(formData.value.username)
+      router.push('/')
+    } catch (error) {
+      console.log('Login falhou', error)
+    }
   }
 }
 </script>

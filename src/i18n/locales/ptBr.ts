@@ -1,3 +1,5 @@
+import { login } from '@/services/request'
+
 const ptBrI18n = {
   locale: {
     en: 'Inglês',
@@ -42,6 +44,10 @@ const ptBrI18n = {
       fifth: 'Quinto'
     },
     slideText: 'Slide'
+  },
+  login: {
+    usernameRequired: 'O usuário é obrigatório',
+    passwordRequired: 'A senha é obrigatória'
   },
   footer: {
     links: {

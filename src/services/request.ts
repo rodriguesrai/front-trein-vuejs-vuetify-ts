@@ -1,8 +1,8 @@
-import instance from '@/services/axios'
+import api from '@/services/axios'
 
 export const login = async (email: string, password: string) => {
   try {
-    const response = await instance.post('auth/login', {
+    const response = await api.post('auth/login', {
       username: email,
       password
     })

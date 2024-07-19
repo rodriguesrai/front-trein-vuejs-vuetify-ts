@@ -43,6 +43,10 @@ const enI18n = {
     },
     slideText: 'Slide'
   },
+  login: {
+    usernameRequired: 'Username is required',
+    passwordRequired: 'Password is required'
+  },
   footer: {
     links: {
       home: 'Home',
