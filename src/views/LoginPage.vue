@@ -43,6 +43,7 @@ import { useRouter } from 'vue-router'
 import { useForm } from '../hooks/useForm'
 import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
+import { login } from '@/services/request'
 const { t } = useI18n()
 
 const router = useRouter()
@@ -54,18 +55,16 @@ const { formData, errors, validate, isFormValid } = useForm(
     password: ''
   },
   yup.object().shape({
-    email: yup
-      .string()
-      .email(() => t(`contact.form.error.emailInvalid`))
-      .required(() => t(`contact.form.error.emailRequired`)),
+    email: yup.string().required(() => t(`contact.form.error.emailRequired`)),
     password: yup.string().required('Password is required')
   })
 )
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   if (isFormValid.value) {
     userStore.setEmail(formData.value.email)
-    router.push('/')
+    await login(formData.value.email, formData.value.password)
+    // router.push('/')
   }
 }
 </script>
