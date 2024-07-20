@@ -44,8 +44,20 @@ const enI18n = {
     slideText: 'Slide'
   },
   login: {
+    username: 'Username',
+    password: 'Password',
     usernameRequired: 'Username is required',
-    passwordRequired: 'Password is required'
+    passwordRequired: 'Password is required',
+    buttonLogin: 'Login',
+    buttonRegister: 'Register'
+  },
+  register: {
+    title: 'Register',
+    name: 'Name',
+    username: 'Username',
+    email: 'Email',
+    password: 'Password',
+    buttonRegister: 'Register'
   },
   footer: {
     links: {
