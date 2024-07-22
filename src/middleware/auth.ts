@@ -1,6 +1,11 @@
 import { useUserStore } from '@/store/useUserStore'
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 
-export const requireAuth = (_to, _from, next) => {
+export const requireAuth = (
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) => {
   const userStore = useUserStore()
   const token = localStorage.getItem('token')
 
