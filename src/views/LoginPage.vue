@@ -26,12 +26,14 @@
                   @input="validate('password')"
                   required
                 ></v-text-field>
-                <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
-                  $t('login.buttonLogin')
-                }}</v-btn>
-                <v-btn @click="router.push('/register')" color="primary">{{
-                  $t('login.buttonRegister')
-                }}</v-btn>
+                <v-row class="button-container" justify="center">
+                  <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
+                    $t('login.buttonLogin')
+                  }}</v-btn>
+                  <v-btn @click="router.push('/register')" color="primary">{{
+                    $t('login.buttonRegister')
+                  }}</v-btn>
+                </v-row>
               </v-form>
             </v-card-text>
           </v-card>
@@ -93,5 +95,10 @@ const handleSubmit = async () => {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.button-container {
+  margin: 1rem;
+  gap: 1rem;
 }
 </style>
