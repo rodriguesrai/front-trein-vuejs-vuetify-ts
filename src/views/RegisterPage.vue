@@ -1,20 +1,39 @@
+<!-- src/views/RegisterPage.vue -->
 <template>
   <v-main>
     <TheHeader />
-    <v-container class="login-main-container">
+    <v-container class="register-main-container">
       <v-row justify="center">
         <v-col cols="12" sm="8" md="6">
           <v-card class="elevation-3">
-            <v-card-title class="headline">Login</v-card-title>
+            <v-card-title class="headline">Register</v-card-title>
             <v-card-text>
               <v-form @submit.prevent="handleSubmit">
+                <v-text-field
+                  v-model="formData.name"
+                  :error-messages="errors.name"
+                  label="Name"
+                  type="text"
+                  @blur="validate('name')"
+                  @input="validate('name')"
+                  required
+                ></v-text-field>
                 <v-text-field
                   v-model="formData.username"
                   :error-messages="errors.username"
                   label="Username"
-                  type="username"
+                  type="text"
                   @blur="validate('username')"
                   @input="validate('username')"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="formData.email"
+                  :error-messages="errors.email"
+                  label="Email"
+                  type="email"
+                  @blur="validate('email')"
+                  @input="validate('email')"
                   required
                 ></v-text-field>
                 <v-text-field
@@ -26,14 +45,7 @@
                   @input="validate('password')"
                   required
                 ></v-text-field>
-                <v-row class="button-container" justify="center">
-                  <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
-                    $t('login.buttonLogin')
-                  }}</v-btn>
-                  <v-btn @click="router.push('/register')" color="primary">{{
-                    $t('login.buttonRegister')
-                  }}</v-btn>
-                </v-row>
+                <v-btn type="submit" color="primary" :disabled="!isFormValid">Register</v-btn>
               </v-form>
             </v-card-text>
           </v-card>
@@ -45,41 +57,42 @@
 
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue'
-import { useUserStore } from '@/store/useUserStore'
-import { useRouter } from 'vue-router'
 import { useForm } from '../hooks/useForm'
+import { useRouter } from 'vue-router'
+import { register } from '@/services/request'
 import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
-import { login } from '@/services/request'
-const { t } = useI18n()
 
+const { t } = useI18n()
 const router = useRouter()
-const userStore = useUserStore()
 
 const { formData, errors, validate, isFormValid } = useForm(
   {
+    name: '',
     username: '',
+    email: '',
     password: ''
   },
   yup.object().shape({
-    username: yup.string().required(() => t(`login.usernameRequired`)),
-    password: yup.string().required(() => t(`login.passwordRequired`))
+    name: yup.string().required('Name is required'),
+    email: yup.string().email('Invalid email').required('Email is required'),
+    username: yup.string().required('Username is required'),
+    password: yup.string().required('Password is required')
   })
 )
 
 const handleSubmit = async () => {
   if (isFormValid.value) {
     try {
-      const data = await login(formData.value.username, formData.value.password)
-      if (data && data.access_token) {
-        localStorage.setItem('token', data.access_token)
-        userStore.setUsername(formData.value.username)
-        router.push('/')
-      } else {
-        console.log('Login falhou: dados inválidos', data)
-      }
+      await register(
+        formData.value.name,
+        formData.value.username,
+        formData.value.email,
+        formData.value.password
+      )
+      router.push('/login')
     } catch (error) {
-      console.log('Login falhou', error)
+      console.log('Registration failed', error)
     }
   }
 }
@@ -90,15 +103,10 @@ const handleSubmit = async () => {
   text-align: center;
 }
 
-.login-main-container {
+.register-main-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.button-container {
-  margin: 1rem;
-  gap: 1rem;
 }
 </style>

@@ -3,14 +3,14 @@ import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    email: localStorage.getItem('userEmail') || '',
+    username: localStorage.getItem('userUsername') || '',
     language:
       localStorage.getItem('userLanguage') || (import.meta.env.VITE_DEFAULT_LOCALE as string)
   }),
   actions: {
-    setEmail(newEmail: string) {
-      this.email = newEmail
-      localStorage.setItem('userEmail', newEmail)
+    setUsername(newUsername: string) {
+      this.username = newUsername
+      localStorage.setItem('userUsername', newUsername)
     },
     setLanguage(newLanguage: string) {
       this.language = newLanguage

@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 import ContactPage from '@/views/ContactPage.vue'
 import LoginPage from '@/views/LoginPage.vue'
-
+import RegisterPage from '@/views/RegisterPage.vue'
+import { requireAuth } from '@/middleware/auth'
+import ProfilePage from '@/views/ProfilePage.vue'
 
 const routes = [
   {
@@ -19,6 +21,17 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: LoginPage
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterPage
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: ProfilePage,
+    beforeEnter: requireAuth
   }
 ]
 

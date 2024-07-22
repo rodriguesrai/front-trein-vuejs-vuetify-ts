@@ -11,13 +11,16 @@
     </div>
     <v-app-bar-title class="title">{{ $t('nav.title') }}</v-app-bar-title>
     <v-btn-toggle v-model="toggle_exclusive">
-      <v-btn @click="changeLanguage('en')" class="transparent-button"> EN </v-btn>
+      <v-btn @click="changeLanguage('en')" class="transparent-button">EN</v-btn>
       <v-btn @click="changeLanguage('ptBr')" class="transparent-button">BR</v-btn>
     </v-btn-toggle>
-    <div v-if="store.email">
-      <span>{{ store.email }}</span>
+    <div class="user-actions">
+      <div v-if="isLogged">
+        <v-btn to="/profile">{{ store.username }}</v-btn>
+        <v-btn @click="handleLogout">{{ $t('nav.logout') }}</v-btn>
+      </div>
+      <v-btn v-else to="/login">{{ $t('nav.login') }}</v-btn>
     </div>
-    <v-btn v-if="!isLogged" to="/login">{{ $t('nav.login') }}</v-btn>
   </v-app-bar>
 </template>
 
@@ -25,6 +28,7 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useUserStore } from '@/store/useUserStore'
+import { logout } from '@/services/request'
 
 const store = useUserStore()
 
@@ -37,7 +41,11 @@ const changeLanguage = (lang: string) => {
   locale.value = lang
 }
 
-const isLogged = computed(() => store.email !== '')
+const isLogged = computed(() => store.username !== '')
+
+const handleLogout = () => {
+  logout()
+}
 </script>
 
 <style scoped>

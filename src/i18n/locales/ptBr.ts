@@ -7,7 +7,7 @@ const ptBrI18n = {
     home: 'Início',
     contact: 'Contato',
     login: 'Entrar',
-    logout: 'Logout',
+    logout: 'Sair',
     title: 'Aplicação Frontend'
   },
   contact: {
@@ -42,6 +42,24 @@ const ptBrI18n = {
       fifth: 'Quinto'
     },
     slideText: 'Slide'
+  },
+  login: {
+    username: 'Usuário',
+    password: 'Senha',
+    usernameRequired: 'O usuário é obrigatório',
+    passwordRequired: 'A senha é obrigatória',
+    buttonLogin: 'Entrar',
+    buttonRegister: 'Registrar'
+  },
+  register: {
+    title: 'Registrar',
+    name: 'Nome',
+    username: 'Usuário',
+    email: 'Email',
+    password: 'Senha',
+    buttonRegister: 'Registrar',
+    passwordRequired: 'A senha é obrigatória',
+    emailInvalid: 'O email é inválido'
   },
   footer: {
     links: {
