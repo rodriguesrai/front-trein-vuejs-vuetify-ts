@@ -33,6 +33,7 @@ const { locale } = useI18n()
 const toggle_exclusive = ref(false)
 
 const changeLanguage = (lang: string) => {
+  store.setLanguage(lang)
   locale.value = lang
 }
 

@@ -34,55 +34,32 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import * as yup from 'yup'
 import { useI18n } from 'vue-i18n'
+import { useForm } from '../hooks/useForm'
 
 const { t } = useI18n()
 
-const formData = ref({
-  name: '',
-  email: '',
-  message: ''
-})
-
-const errors = ref({
-  name: [] as string[],
-  email: [] as string[],
-  message: [] as string[]
-})
-
-const isFormValid = computed(
-  () =>
-    !Object.entries(formData.value).some(
-      ([field, value]) => !value || errors.value[field as keyof typeof errors.value].length > 0
-    )
+const { formData, errors, validate, isFormValid } = useForm(
+  {
+    name: '',
+    email: '',
+    message: ''
+  },
+  yup.object().shape({
+    name: yup.string().required(() => t(`contact.form.error.name`)),
+    email: yup
+      .string()
+      .email(() => t(`contact.form.error.emailInvalid`))
+      .required(() => t(`contact.form.error.emailRequired`)),
+    message: yup.string().required(() => t(`contact.form.error.message`))
+  })
 )
 
-const schema = yup.object().shape({
-  name: yup.string().required(() => t(`contact.form.error.name`)),
-  email: yup
-    .string()
-    .email(() => t(`contact.form.error.emailInvalid`))
-    .required(() => t(`contact.form.error.emailRequired`)),
-  message: yup.string().required(() => t(`contact.form.error.message`))
-})
-
-const validate = (field: keyof typeof formData.value) => {
-  try {
-    schema.validateSyncAt(field, formData.value)
-    errors.value[field] = []
-  } catch (err) {
-    if (err instanceof yup.ValidationError) {
-      errors.value[field] = err.errors
-    }
-  }
-}
-
 const handleSubmit = () => {
-  schema.validate(formData.value, { abortEarly: false }).then(() => {
-    console.log('Formulário válido')
-  })
+  if (isFormValid.value) {
+    console.log('Form submitted')
+  }
 }
 </script>
 
