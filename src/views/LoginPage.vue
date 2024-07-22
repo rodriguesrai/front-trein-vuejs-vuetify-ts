@@ -5,7 +5,9 @@
       <v-row justify="center">
         <v-col cols="12" sm="8" md="6">
           <v-card class="elevation-3">
-            <v-card-title class="headline">Login</v-card-title>
+            <v-card-title>
+              <h3 class="headline">Login</h3>
+            </v-card-title>
             <v-card-text>
               <v-form @submit.prevent="handleSubmit">
                 <v-text-field
@@ -15,6 +17,7 @@
                   type="username"
                   @blur="validate('username')"
                   @input="validate('username')"
+                  data-testid="username-input"
                   required
                 ></v-text-field>
                 <v-text-field
@@ -24,15 +27,19 @@
                   type="password"
                   @blur="validate('password')"
                   @input="validate('password')"
+                  data-testid="password-input"
                   required
                 ></v-text-field>
                 <v-row class="button-container" justify="center">
                   <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
                     $t('login.buttonLogin')
                   }}</v-btn>
-                  <v-btn @click="router.push('/register')" color="primary">{{
-                    $t('login.buttonRegister')
-                  }}</v-btn>
+                  <v-btn
+                    @click="router.push('/register')"
+                    color="primary"
+                    data-testid="register-button"
+                    >{{ $t('login.buttonRegister') }}</v-btn
+                  >
                 </v-row>
               </v-form>
             </v-card-text>

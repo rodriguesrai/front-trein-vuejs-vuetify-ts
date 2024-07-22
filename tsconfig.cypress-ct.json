@@ -5,7 +5,8 @@
     "src/**/*",
     "src/**/*.vue",
     "cypress/support/component.*",
-    "cypress/support/commands.ts"
+    "cypress/support/commands.ts",
+    "cypress/e2e/login.spec.cy.ts"
   ],
   "exclude": [],
   "compilerOptions": {
