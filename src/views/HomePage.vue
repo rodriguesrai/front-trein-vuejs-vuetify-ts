@@ -1,6 +1,6 @@
 <template>
   <v-main class="main-container">
-    <TheHeader />
+    <TheHeader data-testid="header" />
     <v-carousel :show-arrows="false" cycle hide-delimiter-background>
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
         <v-sheet :color="colors[i]" height="100%">
@@ -13,7 +13,7 @@
     <div class="card-container">
       <CardItem v-for="index in 3" :key="index" />
     </div>
-    <TheFooter />
+    <TheFooter data-testid="footer" />
   </v-main>
 </template>
 

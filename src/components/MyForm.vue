@@ -8,6 +8,7 @@
         :error-messages="errors.name"
         @blur="validate('name')"
         @input="validate('name')"
+        data-testid="name-input"
         required
       ></v-text-field>
       <v-text-field
@@ -16,6 +17,7 @@
         :error-messages="errors.email"
         @blur="validate('email')"
         @input="validate('email')"
+        data-testid="email-input"
         required
       ></v-text-field>
       <v-textarea
@@ -24,9 +26,10 @@
         :error-messages="errors.message"
         @blur="validate('message')"
         @input="validate('message')"
+        data-testid="message-input"
         required
       ></v-textarea>
-      <v-btn type="submit" color="primary" :disabled="!isFormValid">{{
+      <v-btn type="submit" color="primary" :disabled="!isFormValid" data-testid="submit-button">{{
         $t('contact.form.submit')
       }}</v-btn>
     </v-form>

@@ -6,8 +6,8 @@
       </v-app-bar-nav-icon>
     </template>
     <div>
-      <v-btn to="/">{{ $t('nav.home') }}</v-btn>
-      <v-btn to="/contact">{{ $t('nav.contact') }}</v-btn>
+      <v-btn to="/" data-testid="home-button">{{ $t('nav.home') }}</v-btn>
+      <v-btn to="/contact" data-testid="contact-button">{{ $t('nav.contact') }}</v-btn>
     </div>
     <v-app-bar-title class="title">{{ $t('nav.title') }}</v-app-bar-title>
     <v-btn-toggle v-model="toggle_exclusive">
@@ -19,7 +19,7 @@
         <v-btn to="/profile">{{ store.username }}</v-btn>
         <v-btn @click="handleLogout">{{ $t('nav.logout') }}</v-btn>
       </div>
-      <v-btn v-else to="/login">{{ $t('nav.login') }}</v-btn>
+      <v-btn v-else to="/login" data-testid="login-button">{{ $t('nav.login') }}</v-btn>
     </div>
   </v-app-bar>
 </template>
