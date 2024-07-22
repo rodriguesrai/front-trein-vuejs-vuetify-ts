@@ -16,7 +16,7 @@
     </v-btn-toggle>
     <div class="user-actions">
       <div v-if="isLogged">
-        <span>{{ store.username }}</span>
+        <v-btn to="/profile">{{ store.username }}</v-btn>
         <v-btn @click="handleLogout">{{ $t('nav.logout') }}</v-btn>
       </div>
       <v-btn v-else to="/login">{{ $t('nav.login') }}</v-btn>
