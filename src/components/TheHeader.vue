@@ -11,7 +11,7 @@
     </div>
     <v-app-bar-title class="title">{{ $t('nav.title') }}</v-app-bar-title>
     <v-btn-toggle v-model="toggle_exclusive">
-      <v-btn @click="changeLanguage('en')" class="transparent-button"> EN </v-btn>
+      <v-btn @click="changeLanguage('en')" class="transparent-button">EN</v-btn>
       <v-btn @click="changeLanguage('ptBr')" class="transparent-button">BR</v-btn>
     </v-btn-toggle>
     <div class="user-actions">
