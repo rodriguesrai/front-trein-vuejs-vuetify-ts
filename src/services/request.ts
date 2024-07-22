@@ -1,9 +1,11 @@
+import router from '@/router'
 import api from '@/services/axios'
+import { useUserStore } from '@/store/useUserStore'
 
-export const login = async (email: string, password: string) => {
+export const login = async (username: string, password: string) => {
   try {
     const response = await api.post('auth/login', {
-      username: email,
+      username,
       password
     })
     const { data } = response
@@ -33,4 +35,11 @@ export const register = async (name: string, username: string, email: string, pa
   } catch (error) {
     console.log(error)
   }
+}
+
+export const logout = async () => {
+  const userStore = useUserStore()
+  localStorage.removeItem('token')
+  userStore.setUsername('')
+  router.push('/')
 }

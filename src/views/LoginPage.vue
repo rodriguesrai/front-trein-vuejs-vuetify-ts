@@ -71,7 +71,7 @@ const handleSubmit = async () => {
       const data = await login(formData.value.username, formData.value.password)
       if (data && data.access_token) {
         localStorage.setItem('token', data.access_token)
-        userStore.setEmail(formData.value.username)
+        userStore.setUsername(formData.value.username)
         router.push('/')
       } else {
         console.log('Login falhou: dados inválidos', data)

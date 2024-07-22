@@ -1,5 +1,3 @@
-import { login } from '@/services/request'
-
 const ptBrI18n = {
   locale: {
     en: 'Inglês',
@@ -9,7 +7,7 @@ const ptBrI18n = {
     home: 'Início',
     contact: 'Contato',
     login: 'Entrar',
-    logout: 'Logout',
+    logout: 'Sair',
     title: 'Aplicação Frontend'
   },
   contact: {
