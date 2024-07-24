@@ -15,14 +15,10 @@ const vuetify = createVuetify({
 global.ResizeObserver = require('resize-observer-polyfill')
 
 describe('CardItem Test', () => {
-  let wrapper: any
-
-  beforeEach(() => {
-    wrapper = mount(CardItem, {
-      global: {
-        plugins: [i18n, vuetify]
-      }
-    })
+  const wrapper = mount(CardItem, {
+    global: {
+      plugins: [i18n, vuetify]
+    }
   })
 
   it('1 - renders components properly', () => {
