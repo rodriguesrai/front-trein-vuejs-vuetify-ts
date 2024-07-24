@@ -14,7 +14,7 @@ const vuetify = createVuetify({
 
 global.ResizeObserver = require('resize-observer-polyfill')
 
-describe('ContactForm', () => {
+describe('MyForm Test', () => {
   let wrapper: any
 
   beforeEach(() => {
