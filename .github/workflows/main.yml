@@ -3,8 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - maim
-      - TREIN-220/aws-cloudfront
+      - main
 
 env:
   IMG_NAME: front-trein-vuejs-vuetify-ts
