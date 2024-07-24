@@ -51,7 +51,7 @@
         </div>
       </article>
     </v-container>
-    <MyForm class="form-wrapper" />
+    <MyForm class="form-wrapper" data-testid="contact-form" />
   </v-main>
 </template>
 
