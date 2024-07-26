@@ -8,9 +8,12 @@ export const login = async (username: string, password: string) => {
       username,
       password
     })
+
     const { data } = response
     return data
   } catch (error) {
+    console.log('url api', api.defaults.baseURL)
+
     console.log(error)
   }
 }
