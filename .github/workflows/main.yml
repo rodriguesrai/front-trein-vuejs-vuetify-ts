@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - EXTRA-2/cors-policy
 
 env:
   IMG_NAME: front-trein-vuejs-vuetify-ts
