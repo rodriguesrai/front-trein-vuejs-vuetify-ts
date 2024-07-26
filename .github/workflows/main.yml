@@ -89,6 +89,7 @@ jobs:
               -p ${{ secrets.FRONT_PORT}}:${{ secrets.FRONT_PORT}} \
               -e VITE_DEFAULT_LOCALE=${{ secrets.VITE_DEFAULT_LOCALE }} \
               -e VITE_FALLBACK_LOCALE=${{ secrets.VITE_FALLBACK_LOCALE }} \
+              -e VITE_API_URL=${{ secrets.VITE_API_URL }} \
               ghcr.io/${{ github.actor }}/${{ env.IMG_NAME }}
 
   deployAWSCloudFront:
