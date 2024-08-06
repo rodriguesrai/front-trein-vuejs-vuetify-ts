@@ -28,7 +28,7 @@
             <v-icon>mdi-instagram</v-icon>
           </v-btn>
         </v-col>
-        <v-row> {{ year }} Areopagus </v-row>
+        <v-row> {{ year }} Raí Rodrigues </v-row>
       </v-row>
     </v-container>
   </v-footer>
