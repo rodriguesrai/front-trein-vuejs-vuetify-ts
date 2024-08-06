@@ -9,7 +9,7 @@
 
 
 <h3>Confira as telas desenvolvidas no projeto</h3>
-<video src="https://github.com/user-attachments/assets/da42a401-3942-4906-83c0-f8dffba92d0f"></video>
+<video src="https://github.com/user-attachments/assets/08512d4a-9689-497a-af1e-07db299b915a"></video>
     
 
 
@@ -41,6 +41,7 @@ Para iniciar o projeto usando Docker Compose, siga os passos abaixo:
     ```bash
     docker compose up -d
     ```
+
 3. A aplicação estará acessível no seguinte endereço:
 
     ```bash
